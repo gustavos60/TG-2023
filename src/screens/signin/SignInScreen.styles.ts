@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   button: {
     width: 200,
-    marginVertical: 20,
+    marginVertical: 5,
   },
   errorMessage: {
     color: 'red',

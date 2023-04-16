@@ -6,6 +6,9 @@ type SignInResponse = {
   token?: string;
 };
 
+const SIGN_IN_URL = 'https://reqres.in/api/login';
+const DEFAULT_HEADERS = {'Content-Type': 'application/json'};
+
 const useSignIn = () => {
   const signIn = useCallback(
     async (email: string, password: string): Promise<SignInResponse> => {
@@ -15,13 +18,14 @@ const useSignIn = () => {
 
       try {
         const requestBody = JSON.stringify({email, password});
-        const response = await fetch('https://reqres.in/api/login', {
+        const response = await fetch(SIGN_IN_URL, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: DEFAULT_HEADERS,
           body: requestBody,
         }).then(data => data.json());
-        console.log({response});
+
         const success = !!response.token;
+
         return {success, token: response.token, error: response.error};
       } catch {
         return {success: false};

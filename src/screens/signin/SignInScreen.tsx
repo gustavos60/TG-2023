@@ -14,8 +14,9 @@ const SignInScreen = () => {
     passwordError,
     setEmail,
     setPassword,
-    trySignIn,
+    onButtonPress,
     isLoading,
+    signInError,
     showEmailError,
     showPasswordError,
   } = useSignInScreen();
@@ -58,12 +59,19 @@ const SignInScreen = () => {
           </Text>
         )}
       </View>
+      <View style={styles.errorContainer}>
+        {!!signInError && (
+          <Text variant="labelSmall" style={styles.errorMessage}>
+            {signInError}
+          </Text>
+        )}
+      </View>
       <Button
         style={styles.button}
         loading={isLoading}
         mode="contained-tonal"
         disabled={isButtonDisabled}
-        onPress={trySignIn}
+        onPress={onButtonPress}
         testID="SignInMainButton">
         Log in
       </Button>
