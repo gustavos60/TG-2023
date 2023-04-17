@@ -5,7 +5,7 @@ import {Text} from 'react-native-paper';
 const HomeScreen = () => {
   return (
     <View>
-      <Text>Home screen</Text>
+      <Text accessibilityLabel="HomeScreen">Home screen</Text>
     </View>
   );
 };

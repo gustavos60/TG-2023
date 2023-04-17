@@ -26,6 +26,7 @@ const SignInScreen = () => {
     <View style={styles.container}>
       <Text
         testID={SignInTestIds.welcomeText}
+        accessibilityLabel={SignInTestIds.welcomeText}
         style={styles.title}
         variant="titleLarge">
         Please enter your credentials
@@ -38,6 +39,7 @@ const SignInScreen = () => {
         error={showEmailError}
         maxLength={50}
         testID={SignInTestIds.emailInput}
+        accessibilityLabel={SignInTestIds.emailInput}
       />
       <View style={styles.errorContainer}>
         {showEmailError && (
@@ -55,6 +57,7 @@ const SignInScreen = () => {
         secureTextEntry
         maxLength={20}
         testID={SignInTestIds.passwordInput}
+        accessibilityLabel={SignInTestIds.passwordInput}
       />
       <View style={styles.errorContainer}>
         {showPasswordError && (
@@ -76,7 +79,8 @@ const SignInScreen = () => {
         mode="contained-tonal"
         disabled={isButtonDisabled}
         onPress={onButtonPress}
-        testID={SignInTestIds.mainButton}>
+        testID={SignInTestIds.mainButton}
+        accessibilityLabel={SignInTestIds.mainButton}>
         Log in
       </Button>
     </View>
