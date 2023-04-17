@@ -58,7 +58,7 @@ const useSignInScreen = () => {
         setIsLoading(false);
       }
     },
-    [],
+    [isButtonDisabled],
   );
 
   const onButtonPress = useCallback(

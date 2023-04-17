@@ -4,6 +4,7 @@ import {TextInput, Button, Text} from 'react-native-paper';
 
 import styles from './SignInScreen.styles';
 import useSignInScreen from './useSignInScreen';
+import {SignInTestIds} from './SignInConstants';
 
 const SignInScreen = () => {
   const {
@@ -23,7 +24,10 @@ const SignInScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title} variant="titleLarge">
+      <Text
+        testID={SignInTestIds.welcomeText}
+        style={styles.title}
+        variant="titleLarge">
         Please enter your credentials
       </Text>
       <TextInput
@@ -33,7 +37,7 @@ const SignInScreen = () => {
         onChangeText={setEmail}
         error={showEmailError}
         maxLength={50}
-        testID="SignInEmailInput"
+        testID={SignInTestIds.emailInput}
       />
       <View style={styles.errorContainer}>
         {showEmailError && (
@@ -50,7 +54,7 @@ const SignInScreen = () => {
         error={showPasswordError}
         secureTextEntry
         maxLength={20}
-        testID="SignInPasswordInputId"
+        testID={SignInTestIds.passwordInput}
       />
       <View style={styles.errorContainer}>
         {showPasswordError && (
@@ -72,7 +76,7 @@ const SignInScreen = () => {
         mode="contained-tonal"
         disabled={isButtonDisabled}
         onPress={onButtonPress}
-        testID="SignInMainButton">
+        testID={SignInTestIds.mainButton}>
         Log in
       </Button>
     </View>
