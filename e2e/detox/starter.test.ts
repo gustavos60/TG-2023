@@ -1,5 +1,5 @@
 import {device, by, element, expect} from 'detox';
-import {SignInTestIds} from '../src/screens/signin/SignInConstants';
+import {SignInTestIds} from '../../src/screens/signin/SignInConstants';
 
 describe('Authentication', () => {
   beforeAll(async () => {

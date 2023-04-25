@@ -1,5 +1,5 @@
 import wdio from 'webdriverio';
-import {SignInTestIds} from '../src/screens/signin/SignInConstants';
+import {SignInTestIds} from '../../src/screens/signin/SignInConstants';
 
 const opts = {
   path: '/wd/hub',

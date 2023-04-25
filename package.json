@@ -3,12 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android --mode=release",
+    "android": "react-native run-android",
+    "android:release": "react-native run-android --mode=release",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "appium:e2e": "NODE_OPTIONS=--experimental-vm-modules jest -i ./e2e/appium.test.ts"
+    "detox:android": "detox build --configuration android.emu.release && detox test --configuration android.emu.release",
+    "detox:ios": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
+    "appium:server": "appium > /dev/null 2>&1 &",
+    "appium:android": "NODE_OPTIONS=--experimental-vm-modules jest -c ./e2e/appium/jest.config.js",
+    "calabash-android": "yarn android:release && mv ./android/app/build/outputs/apk/release/app-release.apk ./app.apk && cd e2e/calabash-android && ls && bundle exec calabash-android build ../../app.apk && bundle exec calabash-android run ../../app.apk"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.9",
