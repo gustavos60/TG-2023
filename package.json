@@ -6,14 +6,16 @@
     "android": "react-native run-android",
     "android:release": "react-native run-android --mode=release",
     "ios": "react-native run-ios",
+    "ios:release": "react-native run-ios --mode Release --simulator='iPhone 12'",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
     "detox:android": "detox build --configuration android.emu.release && detox test --configuration android.emu.release",
     "detox:ios": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
     "appium:server": "appium > /dev/null 2>&1 &",
-    "appium:android": "NODE_OPTIONS=--experimental-vm-modules jest -c ./e2e/appium/jest.config.js",
-    "calabash-android": "yarn android:release && mv ./android/app/build/outputs/apk/release/app-release.apk ./app.apk && cd e2e/calabash-android && ls && bundle exec calabash-android build ../../app.apk && bundle exec calabash-android run ../../app.apk"
+    "appium:android": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=android jest -c ./e2e/appium/jest.config.js",
+    "appium:ios": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=ios jest -c ./e2e/appium/jest.config.js",
+    "calabash:android": "yarn android:release && mv ./android/app/build/outputs/apk/release/app-release.apk ./app.apk && cd e2e/calabash-android && ls && bundle exec calabash-android build ../../app.apk && bundle exec calabash-android run ../../app.apk"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.9",
