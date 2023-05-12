@@ -6,10 +6,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  input: {
-    width: 300,
-    marginBottom: 5,
-  },
   button: {
     width: 200,
     marginVertical: 5,

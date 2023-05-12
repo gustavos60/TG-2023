@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {View} from 'react-native';
-import {TextInput, Button, Text} from 'react-native-paper';
+import {Button, Text} from 'react-native-paper';
 
 import styles from './SignInScreen.styles';
 import useSignInScreen from './useSignInScreen';
 import {SignInTestIds} from './SignInConstants';
+import {Input} from '../../components';
 
 const SignInScreen = () => {
   const {
@@ -31,41 +32,31 @@ const SignInScreen = () => {
         variant="titleLarge">
         Please enter your credentials
       </Text>
-      <TextInput
-        style={styles.input}
+      <Input
         value={email}
         label="Email"
         onChangeText={setEmail}
         error={showEmailError}
         maxLength={50}
+        autoCapitalize="none"
         testID={SignInTestIds.emailInput}
         accessibilityLabel={SignInTestIds.emailInput}
+        showError={showEmailError}
+        errorText={emailError}
       />
-      <View style={styles.errorContainer}>
-        {showEmailError && (
-          <Text variant="labelSmall" style={styles.errorMessage}>
-            {emailError}
-          </Text>
-        )}
-      </View>
-      <TextInput
-        style={styles.input}
+      <Input
         value={password}
         label="Password"
+        autoCapitalize="none"
         onChangeText={setPassword}
         error={showPasswordError}
         secureTextEntry
         maxLength={20}
         testID={SignInTestIds.passwordInput}
         accessibilityLabel={SignInTestIds.passwordInput}
+        showError={showPasswordError}
+        errorText={passwordError}
       />
-      <View style={styles.errorContainer}>
-        {showPasswordError && (
-          <Text variant="labelSmall" style={styles.errorMessage}>
-            {passwordError}
-          </Text>
-        )}
-      </View>
       <View style={styles.errorContainer}>
         {!!signInError && (
           <Text variant="labelSmall" style={styles.errorMessage}>

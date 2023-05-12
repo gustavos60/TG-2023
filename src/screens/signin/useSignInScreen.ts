@@ -1,5 +1,6 @@
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {useCallback, useEffect, useMemo, useState} from 'react';
+import {Keyboard} from 'react-native';
 
 import useEmailInput from '../../hooks/useEmailInput';
 import usePasswordInput from '../../hooks/usePasswordInput';
@@ -49,6 +50,7 @@ const useSignInScreen = () => {
         if (success && token) {
           setEmail('');
           setPassword('');
+          Keyboard.dismiss();
           navigation.navigate(Routes.Home);
         } else if (error) {
           setSignInError(error);

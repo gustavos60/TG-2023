@@ -18,7 +18,9 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 const MainNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{header: () => null}}>
+    <Stack.Navigator
+      initialRouteName={Routes.Home}
+      screenOptions={{header: () => null}}>
       <Stack.Screen name={Routes.SignIn} component={SignInScreen} />
       <Stack.Screen name={Routes.Home} component={HomeScreen} />
       <Stack.Screen name={Routes.Profile} component={ProfileScreen} />

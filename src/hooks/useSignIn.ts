@@ -1,13 +1,11 @@
 import {useCallback} from 'react';
+import {reqResSignIn} from '../api/reqres';
 
 type SignInResponse = {
   success: boolean;
   error?: string;
   token?: string;
 };
-
-const SIGN_IN_URL = 'https://reqres.in/api/login';
-const DEFAULT_HEADERS = {'Content-Type': 'application/json'};
 
 const useSignIn = () => {
   const signIn = useCallback(
@@ -17,12 +15,7 @@ const useSignIn = () => {
       }
 
       try {
-        const requestBody = JSON.stringify({email, password});
-        const response = await fetch(SIGN_IN_URL, {
-          method: 'POST',
-          headers: DEFAULT_HEADERS,
-          body: requestBody,
-        }).then(data => data.json());
+        const response = await reqResSignIn(email, password);
 
         const success = !!response.token;
 
