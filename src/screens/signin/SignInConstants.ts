@@ -4,3 +4,10 @@ export const SignInTestIds = {
   passwordInput: 'SignInPasswordInputId',
   mainButton: 'SignInMainButton',
 };
+
+export const SignInLabels = {
+  welcomeText: 'Please enter your credentials',
+  emailLabel: 'Email',
+  passwordLabel: 'Password',
+  mainButton: 'Log in',
+};

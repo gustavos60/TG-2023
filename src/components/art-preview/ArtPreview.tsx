@@ -37,6 +37,9 @@ export const ArtPreview = (props: Props) => {
             {art.title}
           </Text>
           <Text numberOfLines={1} style={styles.author}>
+            {art.date_display}
+          </Text>
+          <Text numberOfLines={1} style={styles.author}>
             by {art.artist_display}
           </Text>
         </View>

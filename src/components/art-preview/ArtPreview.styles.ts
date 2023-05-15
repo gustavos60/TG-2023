@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   touchable: {
-    marginHorizontal: 20,
     marginBottom: 15,
   },
   container: {
@@ -17,7 +16,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   textContainer: {
-    padding: 10,
+    padding: 5,
     flex: 3,
   },
   title: {
@@ -25,6 +24,9 @@ export default StyleSheet.create({
   },
   author: {
     textAlign: 'right',
-    flex: 1,
+  },
+  date: {
+    textAlign: 'left',
+    marginRight: 20,
   },
 });

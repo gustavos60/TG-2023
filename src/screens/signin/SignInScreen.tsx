@@ -4,8 +4,9 @@ import {Button, Text} from 'react-native-paper';
 
 import styles from './SignInScreen.styles';
 import useSignInScreen from './useSignInScreen';
-import {SignInTestIds} from './SignInConstants';
+import {SignInLabels, SignInTestIds} from './SignInConstants';
 import {Input} from '../../components';
+import {testProps} from '../../utils/testProps';
 
 const SignInScreen = () => {
   const {
@@ -26,36 +27,33 @@ const SignInScreen = () => {
   return (
     <View style={styles.container}>
       <Text
-        testID={SignInTestIds.welcomeText}
-        accessibilityLabel={SignInTestIds.welcomeText}
         style={styles.title}
-        variant="titleLarge">
-        Please enter your credentials
+        variant="titleLarge"
+        {...testProps(SignInTestIds.welcomeText)}>
+        {SignInLabels.welcomeText}
       </Text>
       <Input
         value={email}
-        label="Email"
+        label={SignInLabels.emailLabel}
         onChangeText={setEmail}
         error={showEmailError}
         maxLength={50}
         autoCapitalize="none"
-        testID={SignInTestIds.emailInput}
-        accessibilityLabel={SignInTestIds.emailInput}
         showError={showEmailError}
         errorText={emailError}
+        {...testProps(SignInTestIds.emailInput)}
       />
       <Input
         value={password}
-        label="Password"
+        label={SignInLabels.passwordLabel}
         autoCapitalize="none"
         onChangeText={setPassword}
         error={showPasswordError}
         secureTextEntry
         maxLength={20}
-        testID={SignInTestIds.passwordInput}
-        accessibilityLabel={SignInTestIds.passwordInput}
         showError={showPasswordError}
         errorText={passwordError}
+        {...testProps(SignInTestIds.passwordInput)}
       />
       <View style={styles.errorContainer}>
         {!!signInError && (
@@ -70,9 +68,8 @@ const SignInScreen = () => {
         mode="contained-tonal"
         disabled={isButtonDisabled}
         onPress={onButtonPress}
-        testID={SignInTestIds.mainButton}
-        accessibilityLabel={SignInTestIds.mainButton}>
-        Log in
+        {...testProps(SignInTestIds.mainButton)}>
+        {SignInLabels.mainButton}
       </Button>
     </View>
   );
