@@ -2,12 +2,12 @@ import * as React from 'react';
 import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 
-const ProfileScreen = () => {
+const DetailsScreen = () => {
   return (
     <View>
-      <Text>Profile screen</Text>
+      <Text>Details screen</Text>
     </View>
   );
 };
 
-export default ProfileScreen;
+export default DetailsScreen;

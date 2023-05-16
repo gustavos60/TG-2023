@@ -1,17 +1,24 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, ProfileScreen, SignInScreen} from '../screens';
+import {
+  HomeScreen,
+  SearchScreen,
+  SignInScreen,
+  DetailsScreen,
+} from '../screens';
 
 export enum Routes {
   Home = 'Home',
-  Profile = 'Profile',
+  Search = 'Search',
   SignIn = 'SignIn',
+  Details = 'Details',
 }
 
 export type RootStackParamList = {
   Home: undefined;
-  Profile: undefined;
+  Search: undefined;
   SignIn: undefined;
+  Details: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -23,7 +30,8 @@ const MainNavigator = () => {
       screenOptions={{header: () => null}}>
       <Stack.Screen name={Routes.SignIn} component={SignInScreen} />
       <Stack.Screen name={Routes.Home} component={HomeScreen} />
-      <Stack.Screen name={Routes.Profile} component={ProfileScreen} />
+      <Stack.Screen name={Routes.Search} component={SearchScreen} />
+      <Stack.Screen name={Routes.Details} component={DetailsScreen} />
     </Stack.Navigator>
   );
 };

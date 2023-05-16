@@ -1,5 +1,6 @@
 import HomeScreen from './home/HomeScreen';
 import SignInScreen from './signin/SignInScreen';
-import ProfileScreen from './profile/Profile';
+import SearchScreen from './search/SearchScreen';
+import DetailsScreen from './details/DetailsScreen';
 
-export {HomeScreen, SignInScreen, ProfileScreen};
+export {HomeScreen, SignInScreen, SearchScreen, DetailsScreen};
