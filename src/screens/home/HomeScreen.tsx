@@ -9,19 +9,40 @@ import {ActivityIndicator, Text} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {testProps} from '../../utils/testProps';
 import {HomeLabels, HomeTestIds} from './HomeConstants';
-import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList, Routes} from '../../navigation/MainNavigator';
+import {StackScreenProps} from '@react-navigation/stack';
+import {FavoritePreview} from '../../components/favorite-preview/FavoritePreview';
 
-const HomeScreen = () => {
+type Props = StackScreenProps<RootStackParamList, Routes.Home>;
+
+const HomeScreen = (props: Props) => {
   const {fetchNextPage, arts, page, favorites, loading} = useHomeScreen();
 
-  const navigation = useNavigation();
+  const {navigation} = props;
 
   useEffect(() => {
     fetchNextPage(1);
   }, []);
 
   const renderArt: ListRenderItem<ArtItem> = useCallback(
-    item => <ArtPreview art={item?.item} key={item?.item?.id} />,
+    item => (
+      <ArtPreview
+        art={item?.item}
+        key={item?.item?.id}
+        onPress={() => navigation.navigate(Routes.Details, {art: item.item})}
+      />
+    ),
+    [],
+  );
+
+  const renderFavorite: ListRenderItem<ArtItem> = useCallback(
+    item => (
+      <FavoritePreview
+        art={item?.item}
+        key={item?.item?.id}
+        onPress={() => navigation.navigate(Routes.Details, {art: item.item})}
+      />
+    ),
     [],
   );
 
@@ -61,7 +82,12 @@ const HomeScreen = () => {
       </Text>
       <FlatList
         data={favorites}
-        renderItem={renderArt}
+        renderItem={renderFavorite}
+        horizontal
+        alwaysBounceVertical={false}
+        contentContainerStyle={styles.favoritesContainer}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         ListEmptyComponent={EmptyFavoritesComponent}
       />
       <Text style={styles.headline} variant="headlineSmall">

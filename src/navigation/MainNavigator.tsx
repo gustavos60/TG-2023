@@ -6,6 +6,7 @@ import {
   SignInScreen,
   DetailsScreen,
 } from '../screens';
+import {ArtItem} from '../api/types';
 
 export enum Routes {
   Home = 'Home',
@@ -18,7 +19,7 @@ export type RootStackParamList = {
   Home: undefined;
   Search: undefined;
   SignIn: undefined;
-  Details: undefined;
+  Details: {art: ArtItem};
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

@@ -18,6 +18,8 @@ export default StyleSheet.create({
   },
   emptyFavoritesLabel: {
     textAlign: 'center',
-    marginVertical: 5,
+  },
+  favoritesContainer: {
+    minHeight: 50,
   },
 });

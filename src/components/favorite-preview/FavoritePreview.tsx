@@ -1,9 +1,9 @@
 import React, {useContext, useMemo} from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {Surface, Text} from 'react-native-paper';
+import {TouchableOpacity} from 'react-native';
+import {Surface} from 'react-native-paper';
 import FastImage from 'react-native-fast-image';
 
-import styles from './ArtPreview.styles';
+import styles from './FavoritePreview.styles';
 import {ArtItem} from '../../api/types';
 import {ArtsContext} from '../../context/arts';
 import {getImageUrl} from '../../api/arts';
@@ -13,7 +13,7 @@ type Props = {
   onPress?: () => void;
 };
 
-export const ArtPreview = (props: Props) => {
+export const FavoritePreview = (props: Props) => {
   const {art, onPress} = props;
 
   const {config} = useContext(ArtsContext);
@@ -36,17 +36,6 @@ export const ArtPreview = (props: Props) => {
           style={styles.image}
           source={{uri: imageUrl}}
         />
-        <View style={styles.textContainer}>
-          <Text numberOfLines={2} variant="titleMedium" style={styles.title}>
-            {art.title}
-          </Text>
-          <Text numberOfLines={1} style={styles.author}>
-            {art.date_display}
-          </Text>
-          <Text numberOfLines={1} style={styles.author}>
-            by {art.artist_display}
-          </Text>
-        </View>
       </Surface>
     </TouchableOpacity>
   );
