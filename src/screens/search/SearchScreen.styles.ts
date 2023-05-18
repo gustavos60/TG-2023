@@ -2,33 +2,33 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    margin: 20,
+    flex: 1,
   },
   headerContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
+  },
+  headerBack: {
+    position: 'absolute',
+    left: 10,
   },
   headerLabel: {
     marginBottom: 15,
     textAlign: 'center',
   },
-  headline: {
-    marginBottom: 10,
+  inputContainer: {
+    padding: 20,
   },
-  emptyFavoritesLabel: {
+  input: {
+    width: '100%',
+  },
+  emptyLabel: {
     textAlign: 'center',
   },
-  favoritesContainer: {
-    minHeight: 50,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   listContainer: {
-    paddingTop: 5,
+    paddingTop: 15,
     paddingBottom: 200,
   },
 });

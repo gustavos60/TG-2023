@@ -5,6 +5,8 @@ export const DetailsTestIds = {
 };
 
 export const DetailsLabels = {
+  header: 'Details',
+  back: 'Go back',
   title: 'Title',
   artist: 'Artist',
   date: 'Date',

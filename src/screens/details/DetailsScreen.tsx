@@ -34,9 +34,9 @@ const DetailsScreen = (props: Props) => {
   return (
     <SafeAreaView>
       <View style={styles.headerContainer}>
-        <Text variant="displaySmall">Details</Text>
+        <Text variant="displaySmall">{DetailsLabels.header}</Text>
         <TouchableOpacity style={styles.headerBack} onPress={navigation.goBack}>
-          <Text variant="labelMedium">Go back</Text>
+          <Text variant="labelMedium">{DetailsLabels.back}</Text>
         </TouchableOpacity>
       </View>
       <FastImage
@@ -72,6 +72,7 @@ const DetailsScreen = (props: Props) => {
       <Snackbar
         visible={snackbarVisible}
         onDismiss={closeSnackBar}
+        duration={3000}
         action={{
           label: 'Close',
           onPress: closeSnackBar,

@@ -1,17 +1,23 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
-import {SafeAreaView, FlatList, ListRenderItem, View} from 'react-native';
+import {
+  SafeAreaView,
+  FlatList,
+  ListRenderItem,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+import {StackScreenProps} from '@react-navigation/stack';
 
-import useHomeScreen from './useHomeScreen';
-import styles from './HomeScreen.styles';
 import {ArtPreview} from '../../components/art-preview/ArtPreview';
 import {ArtItem} from '../../api/types';
 import {ActivityIndicator, Text} from 'react-native-paper';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {testProps} from '../../utils/testProps';
 import {HomeLabels, HomeTestIds} from './HomeConstants';
 import {RootStackParamList, Routes} from '../../navigation/MainNavigator';
-import {StackScreenProps} from '@react-navigation/stack';
 import {FavoritePreview} from '../../components/favorite-preview/FavoritePreview';
+
+import useHomeScreen from './useHomeScreen';
+import styles from './HomeScreen.styles';
 
 type Props = StackScreenProps<RootStackParamList, Routes.Home>;
 
@@ -90,15 +96,25 @@ const HomeScreen = (props: Props) => {
         showsHorizontalScrollIndicator={false}
         ListEmptyComponent={EmptyFavoritesComponent}
       />
-      <Text style={styles.headline} variant="headlineSmall">
-        {HomeLabels.allLabel}
-      </Text>
+      <View style={styles.row}>
+        <Text style={styles.headline} variant="headlineSmall">
+          {HomeLabels.allLabel}
+        </Text>
+        <TouchableOpacity
+          {...testProps(HomeTestIds.searchButton)}
+          onPress={() => navigation.navigate(Routes.Search)}>
+          <Text style={styles.headline} variant="labelMedium">
+            {HomeLabels.search}
+          </Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={arts}
         renderItem={renderArt}
         showsVerticalScrollIndicator={false}
         onEndReached={() => fetchNextPage(page)}
         ListFooterComponent={ArtsFooterComponent}
+        contentContainerStyle={styles.listContainer}
       />
     </SafeAreaView>
   );

@@ -6,6 +6,7 @@ import FastImage from 'react-native-fast-image';
 import styles from './ArtPreview.styles';
 import {ArtItem} from '../../api/types';
 import useImageUrl from '../../hooks/useImageUrl';
+import {testProps} from '../../utils/testProps';
 
 type Props = {
   art: ArtItem;
@@ -20,7 +21,7 @@ export const ArtPreview = (props: Props) => {
   return (
     <TouchableOpacity
       style={styles.touchable}
-      testID={String(art.id)}
+      {...testProps(`Art-${art.id}`)}
       onPress={onPress}>
       <Surface style={styles.container}>
         <FastImage
