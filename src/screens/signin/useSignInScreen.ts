@@ -41,6 +41,7 @@ const useSignInScreen = () => {
   const trySignIn = useCallback(
     async (inputEmail: string, inputPassword: string) => {
       try {
+        Keyboard.dismiss();
         if (isButtonDisabled) {
           return;
         }
@@ -50,7 +51,6 @@ const useSignInScreen = () => {
         if (success && token) {
           setEmail('');
           setPassword('');
-          Keyboard.dismiss();
           navigation.navigate(Routes.Home);
         } else if (error) {
           setSignInError(error);

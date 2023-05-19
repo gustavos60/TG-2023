@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   button: {
     width: 200,
-    marginVertical: 5,
+    marginBottom: 50,
   },
   errorMessage: {
     color: 'red',

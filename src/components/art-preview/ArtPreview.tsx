@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Surface, Text} from 'react-native-paper';
 import FastImage from 'react-native-fast-image';
@@ -18,10 +18,12 @@ export const ArtPreview = (props: Props) => {
 
   const imageUrl = useImageUrl(art);
 
+  const testId = useMemo(() => `Art-${art.id}`, [art?.id]);
+
   return (
     <TouchableOpacity
       style={styles.touchable}
-      {...testProps(`Art-${art.id}`)}
+      {...testProps(testId)}
       onPress={onPress}>
       <Surface style={styles.container}>
         <FastImage

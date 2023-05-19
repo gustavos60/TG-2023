@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Surface} from 'react-native-paper';
 import FastImage from 'react-native-fast-image';
@@ -6,6 +6,7 @@ import FastImage from 'react-native-fast-image';
 import styles from './FavoritePreview.styles';
 import {ArtItem} from '../../api/types';
 import useImageUrl from '../../hooks/useImageUrl';
+import {testProps} from '../../utils/testProps';
 
 type Props = {
   art: ArtItem;
@@ -17,10 +18,12 @@ export const FavoritePreview = (props: Props) => {
 
   const imageUrl = useImageUrl(art);
 
+  const testId = useMemo(() => `Fav-${art.id}`, [art?.id]);
+
   return (
     <TouchableOpacity
       style={styles.touchable}
-      testID={String(art.id)}
+      {...testProps(testId)}
       onPress={onPress}>
       <Surface style={styles.container}>
         <FastImage

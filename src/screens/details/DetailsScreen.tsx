@@ -11,7 +11,8 @@ import {getImageUrl} from '../../api/arts';
 
 import styles from './DetailsScreen.styles';
 import useDetailsScreen from './useDetailsScreen';
-import {DetailsLabels} from './DetailsConstants';
+import {DetailsLabels, DetailsTestIds} from './DetailsConstants';
+import {testProps} from '../../utils/testProps';
 
 type Props = StackScreenProps<RootStackParamList, Routes.Details>;
 
@@ -19,6 +20,7 @@ const DetailsScreen = (props: Props) => {
   const {route, navigation} = props;
 
   const {art} = route.params || {};
+
   const {buttonLabel, closeSnackBar, onButtonPress, snackbarVisible} =
     useDetailsScreen(art);
 
@@ -32,10 +34,15 @@ const DetailsScreen = (props: Props) => {
   }, [art, config]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text variant="displaySmall">{DetailsLabels.header}</Text>
-        <TouchableOpacity style={styles.headerBack} onPress={navigation.goBack}>
+        <Text variant="displaySmall" {...testProps(DetailsTestIds.header)}>
+          {DetailsLabels.header}
+        </Text>
+        <TouchableOpacity
+          {...testProps(DetailsTestIds.goBack)}
+          style={styles.headerBack}
+          onPress={navigation.goBack}>
           <Text variant="labelMedium">{DetailsLabels.back}</Text>
         </TouchableOpacity>
       </View>
@@ -65,17 +72,22 @@ const DetailsScreen = (props: Props) => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <Button style={styles.button} mode="elevated" onPress={onButtonPress}>
+        <Button
+          {...testProps(DetailsTestIds.favoriteButton)}
+          style={styles.button}
+          mode="elevated"
+          onPress={onButtonPress}>
           {buttonLabel}
         </Button>
       </View>
       <Snackbar
         visible={snackbarVisible}
         onDismiss={closeSnackBar}
-        duration={3000}
+        duration={2000}
         action={{
           label: 'Close',
           onPress: closeSnackBar,
+          ...testProps(DetailsTestIds.closeSnackbar),
         }}>
         {DetailsLabels.done}
       </Snackbar>

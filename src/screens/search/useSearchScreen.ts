@@ -27,7 +27,7 @@ const useSearchScreen = () => {
       } finally {
         setLoading(false);
       }
-    }, 500),
+    }, 1000),
     [],
   );
 

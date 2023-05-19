@@ -2,6 +2,7 @@ export const DetailsTestIds = {
   goBack: 'DetailsBackButton',
   favoriteButton: 'DetailsFavoriteButton',
   header: 'DetailsHeader',
+  closeSnackbar: 'DetailsCloseSnackbar',
 };
 
 export const DetailsLabels = {

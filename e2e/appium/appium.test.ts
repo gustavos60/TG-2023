@@ -6,7 +6,6 @@ import {byAccessibilityLabel} from './utils';
 const opts = {
   path: '/wd/hub',
   port: 4723,
-  logLevel: 'warn',
 };
 
 describe('appium test', () => {
@@ -24,7 +23,6 @@ describe('appium test', () => {
       capabilities,
     };
 
-    // @ts-ignore - weird ts error
     client = await wdio.remote(options);
   });
 

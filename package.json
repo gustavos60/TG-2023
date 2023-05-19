@@ -12,6 +12,8 @@
     "test": "jest",
     "detox:android": "detox build --configuration android.emu.release && detox test --configuration android.emu.release",
     "detox:ios": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
+    "detox:android:debug": "detox build --configuration android.emu.debug && detox test --configuration android.emu.debug",
+    "detox:ios:debug": "detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
     "appium:server": "appium > /dev/null 2>&1 &",
     "appium:android": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=android jest -c ./e2e/appium/jest.config.js",
     "appium:ios": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=ios jest -c ./e2e/appium/jest.config.js",
