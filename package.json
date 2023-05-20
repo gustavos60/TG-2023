@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "android:release": "react-native run-android --mode=release",
     "ios": "react-native run-ios",
-    "ios:release": "react-native run-ios --mode Release --simulator='iPhone 12'",
+    "ios:release": "react-native run-ios --mode Release --simulator='iPhone 12' --buildFolder=./build",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
