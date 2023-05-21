@@ -1,6 +1,5 @@
 import React, {useMemo} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {Surface} from 'react-native-paper';
 import FastImage from 'react-native-fast-image';
 
 import styles from './FavoritePreview.styles';
@@ -24,14 +23,13 @@ export const FavoritePreview = (props: Props) => {
     <TouchableOpacity
       style={styles.touchable}
       {...testProps(testId)}
+      hitSlop={{left: 5, right: 5}}
       onPress={onPress}>
-      <Surface style={styles.container}>
-        <FastImage
-          resizeMode="cover"
-          style={styles.image}
-          source={{uri: imageUrl}}
-        />
-      </Surface>
+      <FastImage
+        resizeMode="cover"
+        style={styles.image}
+        source={{uri: imageUrl}}
+      />
     </TouchableOpacity>
   );
 };

@@ -5,11 +5,6 @@ export default StyleSheet.create({
     marginBottom: 15,
     marginHorizontal: 5,
   },
-  container: {
-    height: 50,
-    flexDirection: 'row',
-    borderRadius: 10,
-  },
   image: {
     borderRadius: 10,
     height: 50,

@@ -20,7 +20,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   favoritesContainer: {
-    minHeight: 50,
+    minHeight: 75,
   },
   row: {
     flexDirection: 'row',
