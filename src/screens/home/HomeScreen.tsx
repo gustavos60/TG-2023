@@ -90,11 +90,12 @@ const HomeScreen = (props: Props) => {
         data={favorites}
         renderItem={renderFavorite}
         horizontal
-        alwaysBounceVertical={false}
+        directionalLockEnabled
         contentContainerStyle={styles.favoritesContainer}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         ListEmptyComponent={EmptyFavoritesComponent}
+        {...testProps(HomeTestIds.favoritesList)}
       />
       <View style={styles.row}>
         <Text style={styles.headline} variant="headlineSmall">
@@ -115,6 +116,7 @@ const HomeScreen = (props: Props) => {
         onEndReached={() => fetchNextPage(page)}
         ListFooterComponent={ArtsFooterComponent}
         contentContainerStyle={styles.listContainer}
+        {...testProps(HomeTestIds.artsList)}
       />
     </SafeAreaView>
   );

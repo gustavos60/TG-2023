@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   touchable: {
-    marginBottom: 15,
     marginHorizontal: 5,
   },
   image: {

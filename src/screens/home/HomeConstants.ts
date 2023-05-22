@@ -3,6 +3,8 @@ export const HomeTestIds = {
   signOut: 'HomeSignOut',
   noFavoritesLabel: 'HomeNoFavoritesLabel',
   searchButton: 'HomeSearch',
+  favoritesList: 'HomeFavoriteScroll',
+  artsList: 'HomeArtsScroll',
 };
 
 export const HomeLabels = {
