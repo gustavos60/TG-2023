@@ -17,7 +17,7 @@
     "appium:server": "appium > /dev/null 2>&1 &",
     "appium:android": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=android jest -c ./e2e/appium/jest.config.js",
     "appium:ios": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=ios jest -c ./e2e/appium/jest.config.js",
-    "calabash:android": "yarn android:release && mv ./android/app/build/outputs/apk/release/app-release.apk ./app.apk && cd e2e/calabash-android && ls && bundle exec calabash-android build ../../app.apk && bundle exec calabash-android run ../../app.apk"
+    "calabash:android": "cd e2e/calabash-android && bundle exec calabash-android build ../../android/app/build/outputs/apk/release/app-release.apk && bundle exec calabash-android run ../../android/app/build/outputs/apk/release/app-release.apk"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.9",
