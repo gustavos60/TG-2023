@@ -20,8 +20,10 @@ describe('Authentication', () => {
   });
 
   it('should navigate to Home screen after authenticating and have no favorites', async () => {
-    await element(by.id(SignInTestIds.emailInput)).typeText(validEmail);
-    await element(by.id(SignInTestIds.passwordInput)).typeText(validPassword);
+    await element(by.id(SignInTestIds.emailInput)).replaceText(validEmail);
+    await element(by.id(SignInTestIds.passwordInput)).replaceText(
+      validPassword,
+    );
     await element(by.id(SignInTestIds.mainButton)).tap();
 
     await expect(element(by.id(HomeTestIds.noFavoritesLabel))).toBeVisible();
@@ -39,8 +41,10 @@ describe('Favorites', () => {
   });
 
   it('should log in the app', async () => {
-    await element(by.id(SignInTestIds.emailInput)).typeText(validEmail);
-    await element(by.id(SignInTestIds.passwordInput)).typeText(validPassword);
+    await element(by.id(SignInTestIds.emailInput)).replaceText(validEmail);
+    await element(by.id(SignInTestIds.passwordInput)).replaceText(
+      validPassword,
+    );
     await element(by.id(SignInTestIds.mainButton)).tap();
 
     await expect(element(by.id(HomeTestIds.searchButton))).toBeVisible();
@@ -53,8 +57,7 @@ describe('Favorites', () => {
   });
 
   it('should search for art by title and navigate to details screen', async () => {
-    await element(by.id(SearchTestIds.input)).typeText(favArtName);
-    await element(by.id(SearchTestIds.input)).typeText(`\n`);
+    await element(by.id(SearchTestIds.input)).replaceText(favArtName);
 
     await waitFor(element(by.id(`Art-${favArtId}`)))
       .toBeVisible()
