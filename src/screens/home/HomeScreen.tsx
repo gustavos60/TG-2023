@@ -116,6 +116,7 @@ const HomeScreen = (props: Props) => {
         onEndReached={() => fetchNextPage(page)}
         ListFooterComponent={ArtsFooterComponent}
         contentContainerStyle={styles.listContainer}
+        onEndReachedThreshold={0.8}
         {...testProps(HomeTestIds.artsList)}
       />
     </SafeAreaView>

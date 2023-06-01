@@ -57,7 +57,12 @@ describe('Favorites', () => {
   });
 
   it('should search for art by title and navigate to details screen', async () => {
-    await element(by.id(SearchTestIds.input)).replaceText(favArtName);
+    if (device.getPlatform() === 'ios') {
+      await element(by.id(SearchTestIds.input)).typeText(favArtName);
+      await element(by.id(SearchTestIds.input)).typeText('\n');
+    } else {
+      await element(by.id(SearchTestIds.input)).replaceText(favArtName);
+    }
 
     await waitFor(element(by.id(`Art-${favArtId}`)))
       .toBeVisible()

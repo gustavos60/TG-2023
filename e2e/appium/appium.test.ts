@@ -1,4 +1,4 @@
-import wdio from 'webdriverio';
+import {remote} from 'webdriverio';
 import {SignInTestIds} from '../../src/screens/signin/SignInConstants';
 import {ANDROID_CAPABILITIES, IOS_CAPABILITIES} from './capabilities';
 import {byAccessibilityLabel} from './utils';
@@ -31,7 +31,7 @@ describe('Appium', () => {
       capabilities,
     };
 
-    client = await wdio.remote(options);
+    client = await remote(options);
   });
 
   afterAll(async () => {

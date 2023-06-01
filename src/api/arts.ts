@@ -1,7 +1,7 @@
 import {ArtsResponse} from './types';
 
 const ARTWORKS_URL = 'https://api.artic.edu/api/v1/artworks';
-const IMAGE_PARAMS = 'full/300,/0/default.jpg';
+const IMAGE_PARAMS = 'full/100,/0/default.jpg';
 const PAGE_SIZE = 8;
 
 const config: RequestInit = {
