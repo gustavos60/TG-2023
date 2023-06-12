@@ -1,4 +1,4 @@
-import {remote} from 'webdriverio';
+import {remote, Browser} from 'webdriverio';
 import {SignInTestIds} from '../../src/screens/signin/SignInConstants';
 import {ANDROID_CAPABILITIES, IOS_CAPABILITIES} from './capabilities';
 import {byAccessibilityLabel} from './utils';
@@ -7,7 +7,6 @@ import {SearchTestIds} from '../../src/screens/search/SearchConstants';
 import {DetailsTestIds} from '../../src/screens/details/DetailsConstants';
 
 const opts = {
-  path: '/wd/hub',
   port: 4723,
 };
 
@@ -18,7 +17,7 @@ const favArtName = 'Space Lab';
 
 describe('Appium', () => {
   jest.setTimeout(15000);
-  let client: WebdriverIO.Browser;
+  let client: Browser<'async'>;
 
   beforeAll(async () => {
     const capabilities =

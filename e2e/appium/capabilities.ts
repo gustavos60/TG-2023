@@ -7,12 +7,12 @@ const IOS_CAPABILITIES = {
 
 const ANDROID_CAPABILITIES = {
   platformName: 'Android',
-  platformVersion: '12',
-  deviceName: 'Pixel_4_API_31',
-  app: './android/app/build/outputs/apk/release/app-release.apk',
-  appPackage: 'com.helloapp',
-  appActivity: '.MainActivity',
-  automationName: 'UiAutomator2',
+  'appium:platformVersion': '8',
+  'appium:deviceName': 'Pixel_4_API_31',
+  'appium:app': './android/app/build/outputs/apk/release/app-release.apk',
+  'appium:appPackage': 'com.helloapp',
+  'appium:appActivity': '.MainActivity',
+  'appium:automationName': 'UiAutomator2',
 };
 
 export {ANDROID_CAPABILITIES, IOS_CAPABILITIES};
