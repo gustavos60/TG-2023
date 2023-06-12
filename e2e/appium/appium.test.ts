@@ -45,13 +45,13 @@ describe('Appium', () => {
         byAccessibilityLabel(SignInTestIds.emailInput),
       );
       await emailInput.click();
-      await emailInput.sendKeys([validEmail]);
+      await emailInput.setValue(validEmail);
 
       const passwordInput = await client.$(
         byAccessibilityLabel(SignInTestIds.passwordInput),
       );
       await passwordInput.click();
-      await passwordInput.sendKeys([validPassword]);
+      await passwordInput.setValue(validPassword);
 
       const mainButton = await client.$(
         byAccessibilityLabel(SignInTestIds.mainButton),
@@ -95,13 +95,13 @@ describe('Appium', () => {
         byAccessibilityLabel(SignInTestIds.emailInput),
       );
       await emailInput.click();
-      await emailInput.sendKeys([validEmail]);
+      await emailInput.setValue(validEmail);
 
       const passwordInput = await client.$(
         byAccessibilityLabel(SignInTestIds.passwordInput),
       );
       await passwordInput.click();
-      await passwordInput.sendKeys([validPassword]);
+      await passwordInput.setValue(validPassword);
 
       const mainButton = await client.$(
         byAccessibilityLabel(SignInTestIds.mainButton),
@@ -146,7 +146,7 @@ describe('Appium', () => {
       );
 
       await searchInput.click();
-      await searchInput.sendKeys([favArtName]);
+      await searchInput.setValue(favArtName);
 
       await client.waitUntil(async () =>
         (await client.$(byAccessibilityLabel(`Art-${favArtId}`))).isDisplayed(),
