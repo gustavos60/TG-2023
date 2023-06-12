@@ -8,7 +8,7 @@ const IOS_CAPABILITIES = {
 
 const ANDROID_CAPABILITIES = {
   platformName: 'Android',
-  'appium:platformVersion': '12',
+  'appium:platformVersion': '8',
   'appium:deviceName': 'Pixel_4_API_31',
   'appium:app': './android/app/build/outputs/apk/release/app-release.apk',
   'appium:appPackage': 'com.helloapp',
