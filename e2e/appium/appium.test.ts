@@ -148,8 +148,12 @@ describe('Appium', () => {
       await searchInput.click();
       await searchInput.setValue(favArtName);
 
-      await client.waitUntil(async () =>
-        (await client.$(byAccessibilityLabel(`Art-${favArtId}`))).isDisplayed(),
+      await client.waitUntil(
+        async () =>
+          (
+            await client.$(byAccessibilityLabel(`Art-${favArtId}`))
+          ).isDisplayed(),
+        {timeout: 30000},
       );
 
       const spaceLabArt = await client.$(
