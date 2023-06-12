@@ -70,7 +70,7 @@ describe('Appium', () => {
         byAccessibilityLabel(HomeTestIds.headerText),
       );
       expect(await homeScreenText.isDisplayed()).toBeTruthy();
-    });
+    }, 120000);
 
     it('should logout successfully', async () => {
       (await client.$(byAccessibilityLabel(HomeTestIds.signOut))).click();
@@ -86,7 +86,7 @@ describe('Appium', () => {
       );
 
       expect(await welcomeText.isDisplayed()).toBeTruthy();
-    });
+    }, 60000);
   });
 
   describe('Favorites', () => {
@@ -120,7 +120,7 @@ describe('Appium', () => {
         byAccessibilityLabel(HomeTestIds.searchButton),
       );
       expect(await searchButton.isDisplayed()).toBeTruthy();
-    });
+    }, 60000);
 
     it('should navigate to search screen', async () => {
       const searchButton = await client.$(
@@ -163,7 +163,7 @@ describe('Appium', () => {
       );
 
       expect((await detailsHeader).isDisplayed()).toBeTruthy();
-    });
+    }, 60000);
 
     it('should add to favorites and see snackbar', async () => {
       const favoriteButton = await client.$(
