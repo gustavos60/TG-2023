@@ -1,8 +1,9 @@
 const IOS_CAPABILITIES = {
   platformName: 'iOS',
-  automationName: 'XCUITest',
-  deviceName: 'iPhone 12',
-  app: './ios/build/Build/Products/Release-iphonesimulator/HelloApp.app',
+  'appium:automationName': 'XCUITest',
+  'appium:deviceName': 'iPhone 12',
+  'appium:app':
+    './ios/build/Build/Products/Release-iphonesimulator/HelloApp.app',
 };
 
 const ANDROID_CAPABILITIES = {

@@ -31,7 +31,7 @@ describe('Appium', () => {
     };
 
     client = await remote(options);
-  });
+  }, 50000);
 
   afterAll(async () => {
     if (client) {
