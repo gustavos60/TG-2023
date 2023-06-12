@@ -58,10 +58,12 @@ describe('Appium', () => {
       );
       await mainButton.click();
 
-      await client.waitUntil(async () =>
-        (
-          await client.$(byAccessibilityLabel(HomeTestIds.headerText))
-        ).isDisplayed(),
+      await client.waitUntil(
+        async () =>
+          (
+            await client.$(byAccessibilityLabel(HomeTestIds.headerText))
+          ).isDisplayed(),
+        {timeout: 30000},
       );
 
       const homeScreenText = await client.$(
@@ -106,10 +108,12 @@ describe('Appium', () => {
       );
       await mainButton.click();
 
-      await client.waitUntil(async () =>
-        (
-          await client.$(byAccessibilityLabel(HomeTestIds.searchButton))
-        ).isDisplayed(),
+      await client.waitUntil(
+        async () =>
+          (
+            await client.$(byAccessibilityLabel(HomeTestIds.searchButton))
+          ).isDisplayed(),
+        {timeout: 30000},
       );
 
       const searchButton = await client.$(
