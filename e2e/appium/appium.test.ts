@@ -41,6 +41,14 @@ describe('Appium', () => {
 
   describe('Authentication', () => {
     it('should login successfully', async () => {
+      await client.waitUntil(
+        async () =>
+          (
+            await client.$(byAccessibilityLabel(SignInTestIds.emailInput))
+          ).isDisplayed(),
+        {timeout: 10000},
+      );
+
       const emailInput = await client.$(
         byAccessibilityLabel(SignInTestIds.emailInput),
       );
