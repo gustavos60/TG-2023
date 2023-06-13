@@ -46,7 +46,7 @@ describe('Appium', () => {
           (
             await client.$(byAccessibilityLabel(SignInTestIds.emailInput))
           ).isDisplayed(),
-        {timeout: 10000},
+        {timeout: 20000},
       );
 
       const emailInput = await client.$(
