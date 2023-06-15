@@ -6,14 +6,17 @@ import {HomeTestIds} from '../../src/screens/home/HomeConstants';
 import {SearchTestIds} from '../../src/screens/search/SearchConstants';
 import {DetailsTestIds} from '../../src/screens/details/DetailsConstants';
 
-const opts = {
-  port: 4723,
-};
+const startSessionTimeout = 180000;
 
 const validEmail = 'eve.holt@reqres.in';
 const validPassword = 'anythingworks';
 const favArtId = 258426;
 const favArtName = 'Space Lab';
+
+const opts = {
+  port: 4723,
+  connectionRetryTimeout: startSessionTimeout,
+};
 
 describe('Appium', () => {
   jest.setTimeout(15000);
@@ -31,7 +34,7 @@ describe('Appium', () => {
     };
 
     client = await remote(options);
-  }, 50000);
+  }, startSessionTimeout);
 
   afterAll(async () => {
     if (client) {
