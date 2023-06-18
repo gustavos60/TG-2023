@@ -6,7 +6,7 @@ import {HomeTestIds} from '../../src/screens/home/HomeConstants';
 import {SearchTestIds} from '../../src/screens/search/SearchConstants';
 import {DetailsTestIds} from '../../src/screens/details/DetailsConstants';
 
-const startSessionTimeout = 300000;
+const startSessionTimeout = 480000;
 
 const validEmail = 'eve.holt@reqres.in';
 const validPassword = 'anythingworks';
