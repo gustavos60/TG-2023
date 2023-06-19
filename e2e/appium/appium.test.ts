@@ -15,7 +15,7 @@ const favArtName = 'Space Lab';
 
 const opts = {
   port: 4723,
-  connectionRetryTimeout: startSessionTimeout / 3,
+  connectionRetryTimeout: startSessionTimeout,
 };
 
 describe('Appium', () => {

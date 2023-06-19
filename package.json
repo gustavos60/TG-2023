@@ -16,7 +16,7 @@
     "detox:ios": "detox test --configuration ios.sim.release",
     "detox:android:debug": "detox build --configuration android.emu.debug && detox test --configuration android.emu.debug",
     "detox:ios:debug": "detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
-    "appium:server": "appium > /dev/null 2>&1 &",
+    "appium:server": "appium > appium.log 2>&1 &",
     "appium:android": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=android jest -c ./e2e/appium/jest.config.js",
     "appium:ios": "NODE_OPTIONS=--experimental-vm-modules PLATFORM=ios jest -c ./e2e/appium/jest.config.js",
     "calabash:android": "cd e2e/calabash-android && bundle exec calabash-android build ../../android/app/build/outputs/apk/release/app-release.apk && bundle exec calabash-android run ../../android/app/build/outputs/apk/release/app-release.apk"
