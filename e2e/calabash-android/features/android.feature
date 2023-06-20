@@ -1,8 +1,5 @@
 Feature: Login feature
 
-  Scenario: Load app
-    Then I wait for 2 seconds
-
   Scenario: As a valid user I can log in and out of my app
     Then I enter "eve.holt@reqres.in" into "SignInEmailInput"
     Then I enter "qwerty" into "SignInPasswordInputId"
