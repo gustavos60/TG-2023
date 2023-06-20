@@ -15,7 +15,7 @@ Before do |scenario|
       calabash_log 'First scenario in feature - reinstalling apps'
     end
 
-    # ensure_app_installed
+    ensure_app_installed
     # clear_app_data
     FeatureMemory.feature = feature
     FeatureMemory.invocation = 1
