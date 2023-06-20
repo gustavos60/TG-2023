@@ -9,3 +9,9 @@ end
 After do |scenario|
   shutdown_test_server
 end
+
+at_exit do 
+  success = ($!.nil? || $!.is_a?(SystemExit) && $!.success?)
+  exit_code = success ? 0 : 1
+  exit! exit_code
+end
