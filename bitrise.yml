@@ -1,0 +1,287 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+trigger_map:
+- pull_request_source_branch: "*"
+  workflow: detox-android
+workflows:
+  appium-android:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - avd-manager@1:
+        inputs:
+        - emulator_id: Pixel_4_API_31
+        - abi: x86_64
+        - api_level: '30'
+        title: Create emulator
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: install
+        title: Install Dependencies
+    - yarn@0:
+        title: Add appium
+        inputs:
+        - command: global add appium@next
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # install appium driver
+            appium driver install uiautomator2
+        title: Appium driver
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: appium:server
+        title: Appium server
+    - yarn@0:
+        title: Build app
+        inputs:
+        - command: android:release
+    - wait-for-android-emulator@1: {}
+    - yarn@0:
+        title: Appium Test
+        inputs:
+        - command: appium:android
+    - deploy-to-bitrise-io@2: {}
+    meta:
+      bitrise.io:
+        stack: linux-docker-android-20.04
+        machine_type_id: standard
+  appium-ios:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: install
+        title: Install Dependencies
+    - script@1:
+        title: Ruby gems & Pod install
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+            # install ruby gems
+            bundle install
+
+            # pod install
+            cd ios && bundle exec pod install
+    - script@1:
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            # applesimutils is a collection of utils for Apple simulators
+            brew tap wix/brew
+            brew install applesimutils
+        title: Apple Sim Utils
+    - yarn@0:
+        title: Add appium
+        inputs:
+        - command: global add appium@next
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # install appium driver
+            appium driver install xcuitest
+        title: Install appium driver
+    - yarn@0:
+        inputs:
+        - command: appium:server
+        title: Run appium server
+    - xcode-build-for-simulator@0:
+        inputs:
+        - configuration: Release
+        - output_dir: ios/build/Build/Products/Release-iphonesimulator
+    - yarn@0:
+        title: Appium Test
+        inputs:
+        - command: appium:ios
+    - create-zip@0:
+        inputs:
+        - destination: "$BITRISE_DEPLOY_DIR/appium.log"
+        - source_path: "./appium.log"
+        is_always_run: true
+        title: Archive appium logs
+    - deploy-to-bitrise-io@2: {}
+  calabash-android:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - avd-manager@1:
+        inputs:
+        - emulator_id: Pixel_4_API_31
+        - abi: x86_64
+        - api_level: '30'
+        title: Create emulator
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: install
+        title: Install Dependencies
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            bundle install
+        title: Gem install
+    - yarn@0:
+        title: Build app
+        inputs:
+        - command: android:release
+    - wait-for-android-emulator@1: {}
+    - script@1:
+        inputs:
+        - is_debug: 'yes'
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+
+            # run calabash tests
+            cd e2e/calabash-android && bundle exec calabash-android build ../../android/app/build/outputs/apk/release/app-release.apk && bundle exec calabash-android run ../../android/app/build/outputs/apk/release/app-release.apk --publish-quiet
+        title: Calabash Test
+    - deploy-to-bitrise-io@2: {}
+    meta:
+      bitrise.io:
+        stack: linux-docker-android-20.04
+        machine_type_id: standard
+  detox-android:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - avd-manager@1:
+        inputs:
+        - emulator_id: Pixel_4_API_31
+        - api_level: '26'
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: install
+        title: Install Dependencies
+    - yarn@0:
+        title: Add detox-cli and react-native cli
+        inputs:
+        - command: global add detox-cli react-native-cli
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: detox:android:build
+        title: Detox Build
+    - wait-for-android-emulator@1: {}
+    - yarn@0:
+        title: Detox Test
+        inputs:
+        - command: detox:android
+    - deploy-to-bitrise-io@2: {}
+    meta:
+      bitrise.io:
+        stack: linux-docker-android-20.04
+        machine_type_id: standard
+  detox-ios:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: install
+        title: Install Dependencies
+    - yarn@0:
+        title: Add detox-cli and react-native cli
+        inputs:
+        - command: global add detox-cli react-native-cli
+    - script@1:
+        inputs:
+        - content: |-
+            #!/bin/bash
+
+            # applesimutils is a collection of utils for Apple simulators
+            brew tap wix/brew
+            brew install applesimutils
+        title: Apple sim utils
+    - script@1:
+        title: Ruby and pod install
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+            # install ruby gems
+            bundle install
+
+            # pod install
+            cd ios && bundle exec pod install
+    - yarn@0:
+        inputs:
+        - workdir: "$WORKDIR"
+        - command: detox:ios:build
+        title: Detox Build
+    - yarn@0:
+        title: Detox Test
+        inputs:
+        - command: detox:ios
+    - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.3.x-ventura
+    machine_type_id: g2-m1.8core
+app:
+  envs:
+  - opts:
+      is_expand: false
+    WORKDIR: "."
+  - opts:
+      is_expand: false
+    PROJECT_LOCATION: android
+  - opts:
+      is_expand: false
+    MODULE: app
+  - opts:
+      is_expand: false
+    VARIANT: Release
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: ios/HelloApp.xcworkspace
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: HelloApp
+  - opts:
+      is_expand: false
+    BITRISE_DISTRIBUTION_METHOD: development
