@@ -1,0 +1,32 @@
+appId: com.helloapp
+---
+- launchApp
+- tapOn: "Email"
+- inputText: "eve.holt@reqres.in"
+- tapOn: "Password"
+- inputText: "anythingWorks"
+- tapOn:
+    id: "SignInMainButton"
+- waitForAnimationToEnd
+- tapOn:
+    id: "HomeSearch"
+- tapOn :
+    id: "SearchInput"
+- inputText: "Space Lab"
+- waitForAnimationToEnd
+- tapOn: "Art-258426"
+- tapOn: "Art-258426"
+- tapOn:
+    id: "DetailsFavoriteButton"
+- tapOn:
+    id: "DetailsBackButton"
+- tapOn:
+    id: "SearchGoBack"
+- tapOn:
+    id: "Fav-258426"
+- tapOn:
+    id: "DetailsFavoriteButton"
+- tapOn:
+    id: "DetailsBackButton"
+- assertVisible:
+    id: "HomeNoFavoritesLabel"

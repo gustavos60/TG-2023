@@ -1,0 +1,16 @@
+appId: com.helloapp
+---
+- launchApp
+- tapOn: "Email"
+- inputText: "eve.holt@reqres.in"
+- tapOn: "Password"
+- inputText: "anythingWorks"
+- tapOn:
+    id: "SignInMainButton"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "HomeNoFavoritesLabel"
+- tapOn:
+    id: "HomeSignOut"
+- assertVisible:
+    id: "SignInWelcomeText"

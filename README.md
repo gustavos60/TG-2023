@@ -100,6 +100,33 @@ Run the tests
 yarn appium:ios
 ```
 
+## Maestro
+
+Install dependencies
+```
+curl -Ls "https://get.maestro.mobile.dev" | bash
+
+# iOS only below
+
+brew tap facebook/fb
+brew install facebook/fb/idb-companion
+```
+
+Install the app with
+```
+yarn android:release
+```
+or
+```
+yarn ios:release
+```
+
+Run the tests with
+```
+maestro test e2e/maestro/
+```
+
+
 ## Calabash
 
 Make sure to have an emulator opened before running the tests
