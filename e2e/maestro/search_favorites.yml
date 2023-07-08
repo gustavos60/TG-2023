@@ -2,7 +2,8 @@ appId: com.helloapp
 ---
 - launchApp
 - tapOn: "Email"
-- inputText: "eve.holt@reqres.in"
+- inputText: "e"
+- inputText: "ve.holt@reqres.in"
 - tapOn: "Password"
 - inputText: "anythingWorks"
 - tapOn:
